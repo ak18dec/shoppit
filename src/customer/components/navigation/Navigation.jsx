@@ -290,7 +290,7 @@ export default function Navigation() {
                   <span className="sr-only">Your Company</span>
                   <img
                     alt=""
-                    src="/public/shoppit-banner-transparent.png"
+                    src="/shoppit-banner-transparent.png"
                     className="h-15 w-auto"
                   />
                 </a>
