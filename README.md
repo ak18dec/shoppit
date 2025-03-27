@@ -1,2 +1,3 @@
 # shoppit
-An e-commerce application build using Angular and Spring Boot
+An e-commerce application build using React and Spring Boot
+
