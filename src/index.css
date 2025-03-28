@@ -3,3 +3,9 @@
 /* @theme {
   --color-gray-500: #707070;
 } */
+
+@layer base {
+  * {
+    @apply focus:outline-none;
+  }
+}
