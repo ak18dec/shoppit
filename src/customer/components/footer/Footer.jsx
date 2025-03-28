@@ -4,7 +4,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-      <Grid className='bg-black text-white text-center mt-10 flex'
+      <Grid className='bg-black text-white text-center mt-10 flex flex-wrap'
       container
       sx={{
         bgcolor: 'black',
@@ -14,7 +14,7 @@ const Footer = () => {
       }}
       spacing={1}
       >
-        <Grid xs={12} sm={6} md={3}>
+        <Grid xs={12} sm={6} md={3} className='flex-1'>
           
             <Typography id="category-a" sx={{ pb: 2, fontWeight: 300 }} variant='h6' gutterBottom>Company</Typography>
             <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2, listStyleType: 'none', fontSize: '13.5px', paddingLeft: 0 }}>
@@ -26,7 +26,7 @@ const Footer = () => {
             </Box>
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid xs={12} sm={6} md={3} className='flex-1'>
             <Typography id="category-b" sx={{ pb: 2, fontWeight: 300 }} variant='h6' gutterBottom>Solutions</Typography>
             <Box component="ul" aria-labelledby="category-b" sx={{ pl: 2, listStyleType: 'none', fontSize: '13.5px', paddingLeft: 0 }}>
               <li>Marketing</li>
@@ -37,7 +37,7 @@ const Footer = () => {
             </Box>
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid xs={12} sm={6} md={3} className='flex-1'>
             <Typography id="category-c" sx={{ pb:2, fontWeight: 300 }} variant="h6" gutterBottom>Documentation</Typography>
             <Box component="ul" aria-labelledby="category-c" sx={{ pl: 2, listStyleType: 'none', fontSize: '13.5px', paddingLeft: 0 }}>
               <li>Guides</li>
@@ -45,7 +45,7 @@ const Footer = () => {
             </Box>
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid xs={12} sm={6} md={3} className='flex-1'>
             <Typography id="category-d" sx={{ pb:2, fontWeight: 300 }} variant='h6' gutterBottom>Legal</Typography>
             <Box component="ul" aria-labelledby="category-d" sx={{ pl: 2, listStyleType: 'none', fontSize: '13.5px', paddingLeft: 0 }}>
               <li>Claim</li>
@@ -53,8 +53,18 @@ const Footer = () => {
               <li>Terms</li>
             </Box>
         </Grid>
-              
+
+        <Grid className='pt-20 w-full' xs={12}>
+          <Typography variant='body2' component="p" align='center'>
+            &copy; 2025 Shoppit. All rights reserved.
+          </Typography>
+          <Typography variant='body2' component="p" align='center'>
+            Made with ❤️ in India.
+          </Typography>
+        </Grid>
+
       </Grid>
+
     </div>
   )
 }
