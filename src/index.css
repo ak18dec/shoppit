@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* @theme {
+@theme {
   --color-gray-500: #707070;
-} */
+}
 
 @layer base {
   * {
