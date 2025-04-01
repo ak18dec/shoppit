@@ -19,6 +19,7 @@ import ProductCard from './ProductCard'
 import { mens_kurta } from '../../../data/mens_kurta'
 import {sortOptions, filters, singleFilter} from './FilterData'
 import { FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@mui/material'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 
 
@@ -28,6 +29,34 @@ function classNames(...classes) {
 
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleFilter = (value, sectionId) => {
+    const searchParams = new URLSearchParams(location.search);
+    let filterValue = searchParams.getAll(sectionId)
+    if(filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
+      filterValue =   filterValue[0].split(",").filter(item => item!== value)
+      if(filterValue.length == 0) {
+        searchParams.delete(sectionId)
+      }
+    } 
+    else {
+      filterValue.push(value)
+    }
+    if(filterValue.length > 0) {
+      searchParams.set(sectionId, filterValue.join(","));
+    }
+    const query = searchParams.toString();
+    navigate({search: `?${query}`})
+  }
+
+  const handleRadioFilterChange = (option, sectionId) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set(sectionId, option.value)
+    const query = searchParams.toString();
+    navigate({search: `?${query}`})
+  }
 
   return (
     <div className="bg-white">
@@ -257,6 +286,7 @@ export default function Product() {
                             <div className="flex h-5 shrink-0 items-center">
                               <div className="group grid size-4 grid-cols-1">
                                 <input
+                                  onChange={() => handleFilter(option.value, section.id)}
                                   defaultValue={option.value}
                                   defaultChecked={option.checked}
                                   id={`filter-${section.id}-${optionIdx}`}
@@ -311,7 +341,14 @@ export default function Product() {
                       <div className="space-y-4">
                         <FormControl>
                           <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
-                            {section.options.map((option) => <FormControlLabel key={option.id} value={option.value} control={<Radio />} label={option.label} />)}
+                            {section.options.map((option) => (
+                              <FormControlLabel 
+                                onChange={() => handleRadioFilterChange(option, section.id)}
+                                key={option.id} 
+                                value={option.value}
+                                control={<Radio />} 
+                                label={option.label} />
+                              ))}
                           </RadioGroup>
                         </FormControl>
                       </div>
